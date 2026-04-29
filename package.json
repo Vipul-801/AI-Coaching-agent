@@ -17,7 +17,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@simplewebauthn/browser": "^9.0.1",
     "@stackframe/stack": "^2.8.48",
-    "assemblyai": "^4.18.5",
+    "assemblyai": "^4.32.1",
     "axios": "^1.13.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
