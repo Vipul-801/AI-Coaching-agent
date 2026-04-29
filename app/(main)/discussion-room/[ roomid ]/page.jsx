@@ -23,7 +23,7 @@ function DiscussionRoom() {
 
   const roomData = useQuery(api.discussionRooms.GetDiscussionRoom, { id: roomid });
 
-    console.log("roomdata", roomData, 'params', params);
+    // console.log("roomdata", roomData, 'params', params);
    const [enableFeedbackNotes,setEnableFeedbackNotes]=useState(false);
    const[expert,setExpert]=useState();
    const [conversation,setConversation]=useState([ {
@@ -54,7 +54,7 @@ function DiscussionRoom() {
      if(roomData){
        
        const Expert = CoachingExpert.find(item => item.name === roomData.expertName || item.name === roomData.expert);
-       console.log('resolved expert', Expert);
+      //  console.log('resolved expert', Expert);
        setExpert(Expert);
      }
    },[roomData])
