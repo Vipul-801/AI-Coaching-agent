@@ -94,7 +94,7 @@ export const ConvertTextToSpeech = async (text) => {
   try {
     const res = await axios.post('/api/tts', { text }, { responseType: 'blob' });
   
-    return res.data;
+    return URL.createObjectURL(res.data);
   } catch (err) {
     console.error('ConvertTextToSpeech proxy error', err);
     return null;

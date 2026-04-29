@@ -9,7 +9,7 @@ import Image from 'next/image';
 import dynamic from "next/dynamic";
 import {ChatBox} from './_components/ChatBox';
 import { Toaster, toast } from 'sonner';
-import { getToken } from '../../../../services/GlobalServices';
+import { getToken, AIModel, ConvertTextToSpeech } from '../../../../services/GlobalServices';
 import { Button } from '@nextui-org/react';
 import { Loader2Icon } from 'lucide-react';
 const RecordRTC = dynamic (()=> import('recordrtc'), { ssr: false });
@@ -109,6 +109,15 @@ function DiscussionRoom() {
        const  aiResp=await AIModel(roomData?.topic,roomData?.coachingOption, transcript?.text);
          lastTwoMessages;
        console.log(aiResp);
+        
+        // Generate TTS for the AI response
+        if (aiResp && aiResp.content) {
+            const url = await ConvertTextToSpeech(aiResp.content);
+            if (url) {
+                setAudioURL(url);
+            }
+        }
+        
         setConversation(prev=>[...prev,aiResp]);
     }
 

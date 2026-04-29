@@ -36,7 +36,7 @@ export async function POST(req) {
     }
 
     // Use a server-side env var for the model so it can be rotated without code changes
-    const model = process.env.OPENROUTER_MODEL;
+    const model = process.env.OPENROUTER_MODEL || 'meta-llama/llama-3-8b-instruct:free';
     if (!model) {
       console.error('Missing OPENROUTER_MODEL env var');
       return NextResponse.json({ error: 'Server configuration error: OPENROUTER_MODEL not set' }, { status: 500 });
